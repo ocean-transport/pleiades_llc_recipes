@@ -1,17 +1,18 @@
 name: pangeo
 channels:
   - conda-forge
+dependencies:
   - python=3.7
   - jupyter
   - jupyterlab=1.0.1
   - tornado=6.0.3
   - bokeh
   - dask>=2.0.0
-  - nbserverproxy
+  - jupyter-server-proxy
   - ipywidgets
   - graphviz
   - dask-labextension==0.3.3
-  - dask-jobque
+  - dask-jobqueue
   - numpy
   - scipy
   - matplotlib
@@ -40,9 +41,8 @@ channels:
   - python-blosc
   - lz4
   - fsspec
-  - xmitgcm>=0.4.1.
   - xgcm
   - xrft
+  - xmitgcm>=0.4.1
+  - xhistogram
   - pip
-  - pip:
-    - xhistogram

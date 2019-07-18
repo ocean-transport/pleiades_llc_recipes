@@ -11,6 +11,6 @@ export LC_ALL="en_US.utf8"
 
 # Setup Environment
 module purge
-conda activate pangeo
+source activate pangeo
 
 jupyter lab --no-browser --ip=`hostname` --port=8877

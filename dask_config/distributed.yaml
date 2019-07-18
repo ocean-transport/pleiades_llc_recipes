@@ -1,0 +1,10 @@
+distributed:
+  dashboard:
+    link: "/proxy/{port}/status" 
+
+# Pleiades compute nodes have no local hard disk: disable spilling to disk
+worker-memory-target: False  # target fraction to stay below
+worker-memory-spill: False  # fraction at which we spill to disk
+worker-memory-pause: 0.70  # fraction at which we pause worker threads
+worker-memory-terminate: 0.95  # fraction at which we terminate the worker
+
