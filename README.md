@@ -88,6 +88,14 @@ and you will be on your way.
 
 ## Interactive Jupyter Usage
 
+Before using jupyterlab, you need to set a password. Run
+
+```
+jupyter notebook password
+```
+
+from the command line.
+
 This repo contains an example job script for launching jupyterlab on a compute node
 called `launch_jupyter.sh`. You need to modify it to include your GID.
 Submit the script to the queue:
