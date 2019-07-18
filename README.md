@@ -78,7 +78,7 @@ everything involving the LLC data is heavy.
 
 Nevertheless, if you wish to do so, you can just do
 ```
-conda activate pangeo
+source activate pangeo
 ipython
 ```
 
