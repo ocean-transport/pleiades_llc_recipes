@@ -43,6 +43,7 @@ Rather than copy and paste, you can get it by cloning this repository
 git clone https://github.com/rabernat/pleiades_llc_recipes
 cd pleiades_llc_recipes
 conda env create -f pangeo_pleiades_environment.yaml
+sh install_jupyter_extensions.sh
 ```
 
 ### Clean files from home directory.
@@ -70,6 +71,18 @@ py.test -v test_llcreader_pleiades.py
 ```
 
 ## From the Head Node
+
+The easiest way to use this environment is from a head node (pfe). However,
+you should probably not do any heavy computing on a head node, and almost
+everything involving the LLC data is heavy.
+
+Nevertheless, if you wish to do so, you can just do
+```
+conda activate pangeo
+ipython
+```
+
+and you will be on your way.
 
 ## Batch Scripts
 
