@@ -84,8 +84,6 @@ ipython
 
 and you will be on your way.
 
-## Batch Scripts
-
 ## Interactive Jupyter Usage
 
 Before using jupyterlab, you need to set a password. Run
@@ -123,3 +121,17 @@ ssh -L 8877:r435i0n8:8877 pfe
 ```
 
 and connect to your server at <http://localhost:8877>
+
+You can see an example notebook in [notebooks/pleiades_llc_examples.ipynb](./notebooks/pleiades_llc_examples.ipynb)
+
+## Batch Scripts
+
+TODO
+
+It's pretty simple: just write a python file with some code in it and submit it as a batch job.
+
+## Dask Distributed
+
+TODO
+
+Need to tune the optimal [dask-jobqueue](https://jobqueue.dask.org/en/latest/) settings for Pleiades.
