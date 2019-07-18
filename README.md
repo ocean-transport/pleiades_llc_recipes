@@ -24,29 +24,47 @@ Dask clusters on Pleaides.
 These tools require a highly customized python environment. To set up the proper
 environment, follow these steps.
 
-1. **Download and install Miniconda.** From the Pleiades command line, run:
-    ```
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    sh Miniconda3-latest-MacOSX-x86_64.sh
-    conda update -y conda
-    # if you use a different shell, replace "bash" with your shell (e.g. "csh")
-    conda init bash
-    ```
-1. **Create a Conda environment with the necessary packages.** A suitable enviroment
-   file is contained in this repository at
-   [pangeo_pleiades_environment.yaml](pangeo_pleiades_environment.yaml).
-   Rather than copy and paste, you can get it by cloning this repository
-   ```
-   git clone https://github.com/rabernat/pleiades_llc_recipes
-   cd pleiades_llc_recipes
-   conda env create -f pangeo_pleiades_environment.yaml
-   ```
-1. **Clean files from home directory.** The above command created about 3.5GB of
-   files in your home directory at `$HOME/miniconda3`. You only have 8GB of home
-   storage space on Pleiades, so it is wise to clean this up a bit.
-   ```
-   conda clean -tipsy
-   rm -rf $HOME/miniconda3/pkgs/*
-   ```
-   This should get the size of the environment down to about 500MB.
-1. **Set up configuration files**.
+### Download and install Miniconda.
+
+From the Pleiades command line, run:
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-MacOSX-x86_64.sh
+conda update -y conda
+# if you use a different shell, replace "bash" with your shell (e.g. "csh")
+conda init bash
+```
+
+### Create a Conda environment with the necessary packages.
+A suitable enviroment file is contained in this repository at
+[pangeo_pleiades_environment.yaml](pangeo_pleiades_environment.yaml).
+Rather than copy and paste, you can get it by cloning this repository
+```
+git clone https://github.com/rabernat/pleiades_llc_recipes
+cd pleiades_llc_recipes
+conda env create -f pangeo_pleiades_environment.yaml
+```
+
+### Clean files from home directory.
+The above command created about 3.5GB of files in your home directory at `$HOME/miniconda3`.
+You only have 8GB of home storage space on Pleiades, so it is wise to clean this up a bit.
+```
+conda clean -tipsy
+rm -rf $HOME/miniconda3/pkgs/*
+```
+This should get the size of the environment down to about 500MB.
+
+### Set up configuration files
+
+Dask needs special configuration files. Install them by running
+```
+cp dask_config/* $HOME/.config/dask/
+```
+
+### Test the environment
+
+There is a test script located in this repository. From the command line, run
+```
+source activate pangeo
+py.test -v test_llcreader_pleiades.py 
+```
