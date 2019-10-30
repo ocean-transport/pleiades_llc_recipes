@@ -4,12 +4,14 @@
 #PBS -l select=2:ncpus=24:model=has
 #PBS -l walltime=00:05:00
 #PBS -j oe
-#PBS -m abe
 #PBS -q devel
 
 # Setup Environment
 module purge
 source activate pangeo
+
+# hack to not use all mpi ranks on the first node
+tail -n +5 $PBS_NODEFILE > TMP_NODEFILE
 
 # start dask cluster
 dask_dir="/nobackup/rpaberna/dask_test"
@@ -20,7 +22,7 @@ rm -f $scheduler_file
 # for some reason, need the full path to mpirun
 MPICMD=`which mpirun`
 
-$MPICMD --np 48 --hostfile $PBS_NODEFILE -x PATH \
+$MPICMD --hostfile TMP_NODEFILE -x PATH \
        dask-mpi --nthreads 1 --no-nanny --scheduler-file $scheduler_file \
        --local-directory $dask_dir  --interface ib0 &
 
@@ -44,3 +46,4 @@ kill %1
 
 # clean up files
 rm -rf "$dask_dir/*"
+rm TMP_NODEFILE
