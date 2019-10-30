@@ -16,7 +16,11 @@ dask_dir="/nobackup/rpaberna/dask_test"
 scheduler_file="$dask_dir/sched.json"
 
 rm -f $scheduler_file
-mpirun --np 48 --hostfile $PBS_NODEFILE \
+
+# for some reason, need the full path to mpirun
+MPICMD=`which mpirun`
+
+$MPICMD --np 48 --hostfile $PBS_NODEFILE -x PATH \
        dask-mpi --nthreads 1 --no-nanny --scheduler-file $scheduler_file \
        --local-directory $dask_dir  --interface ib0 &
 
