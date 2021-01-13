@@ -45,7 +45,8 @@ Rather than copy and paste, you can get it by cloning this repository
 git clone https://github.com/rabernat/pleiades_llc_recipes
 cd pleiades_llc_recipes
 conda env create -f pangeo_pleiades_environment.yaml
-sh install_jupyter_extensions.sh
+sh install_jupyter_extensions.sh # unable to run this. a) compained about nodejs, after installing that 
+# then complains: ValueError: "@jupyter-widgets/jupyterlab-manager" is not a valid extension
 ```
 
 ### Clean files from home directory.
@@ -69,7 +70,7 @@ cp dask_config/* $HOME/.config/dask/
 There is a test script located in this repository. From the command line, run
 ```
 source activate pangeo
-py.test -v test_llcreader_pleiades.py 
+py.test -v test_llcreader_pleiades.py # the test failed, probably because llc has moved around. 
 ```
 
 ## From the Head Node
