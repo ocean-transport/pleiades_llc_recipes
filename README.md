@@ -29,10 +29,12 @@ environment, follow these steps.
 From the Pleiades command line, run:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sh Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+# incase the intializer does not do anything (happened to me)
+source <path to conda>/bin/activate
 conda update -y conda
 # if you use a different shell, replace "bash" with your shell (e.g. "csh")
-conda init bash
+conda init bash # just gave a message saying no action taken.
 ```
 
 ### Create a Conda environment with the necessary packages.
