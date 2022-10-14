@@ -29,10 +29,12 @@ environment, follow these steps.
 From the Pleiades command line, run:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sh Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+# incase the intializer does not do anything (happened to me)
+source <path to conda>/bin/activate
 conda update -y conda
 # if you use a different shell, replace "bash" with your shell (e.g. "csh")
-conda init bash
+conda init bash # just gave a message saying no action taken.
 ```
 
 ### Create a Conda environment with the necessary packages.
@@ -43,7 +45,8 @@ Rather than copy and paste, you can get it by cloning this repository
 git clone https://github.com/rabernat/pleiades_llc_recipes
 cd pleiades_llc_recipes
 conda env create -f pangeo_pleiades_environment.yaml
-sh install_jupyter_extensions.sh
+sh install_jupyter_extensions.sh # unable to run this. a) compained about nodejs, after installing that 
+# then complains: ValueError: "@jupyter-widgets/jupyterlab-manager" is not a valid extension
 ```
 
 ### Clean files from home directory.
@@ -67,7 +70,7 @@ cp dask_config/* $HOME/.config/dask/
 There is a test script located in this repository. From the command line, run
 ```
 source activate pangeo
-py.test -v test_llcreader_pleiades.py 
+py.test -v test_llcreader_pleiades.py # the test failed, probably because llc has moved around. 
 ```
 
 ## From the Head Node

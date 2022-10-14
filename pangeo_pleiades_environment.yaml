@@ -4,16 +4,17 @@ channels:
 dependencies:
   - python=3.7
   - jupyter
-  - jupyterlab=1.0.1
-  - tornado=6.0.3
+  - jupyterlab=2
+  - tornado>=6.0.3
   - bokeh
   - dask>=2.0.0
   - jupyter-server-proxy
   - ipywidgets
   - graphviz
-  - dask-labextension==0.3.3
+  - dask-labextension>=0.3.3
   - dask-jobqueue
   - dask-mpi
+  - nodejs
   - numpy
   - scipy
   - matplotlib
