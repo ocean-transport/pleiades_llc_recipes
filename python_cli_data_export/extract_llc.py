@@ -40,7 +40,7 @@ Take all inputs as strings, or lists as '["var1","var2"]' """
 	iend=json.loads(iend)
 	jstart=json.loads(jstart)
 	jend=json.loads(jend)
-	ds.sel(face=facen).isel(i=slice(istart,iend),j=slice(jstart,jend)).to_netcdf(out_dir+fname)
+	ds.sel(face=facen).isel(i=slice(istart,iend),i_g=slice(istart,iend),j=slice(jstart,jend),j_g=slice(jstart,jend)).to_netcdf(out_dir+fname)
 
 if __name__ == '__main__':
     extract_llc()
