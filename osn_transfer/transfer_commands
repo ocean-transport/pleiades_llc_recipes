@@ -1,0 +1,4 @@
+./transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/V/V.0000000000.data cnh-bucket-1/rpa-transfer-test
+./transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/V/V.0000000080.data cnh-bucket-1/rpa-transfer-test
+./transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/V/V.0000000160.data cnh-bucket-1/rpa-transfer-test
+./transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/V/V.0000000240.data cnh-bucket-1/rpa-transfer-test

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Run as batch script e.g.
+# qsub -l select=1:model=has -lwalltime=30:00 -q devel test_osn_transfer.pbs
+
+#
+# Set your access (AKEY) and secret (SKEY) keys here.
+# If you dont' have keys ping me (Chris) and you can use mine.
+#
+export AKEY="ASK_RYAN"
+export SKEY="ASK_RYAN"
+
+#
+#  Create list of transfer commands in a file so we can use GNU parallel - don't have to do it this way.
+#  i.e. for GNU parallel generate a bunch of records like shown
+#
+#      ~cnhill1/bin/transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/U/U.0000000000.data cnh-bucket-1/DYAMOND
+#      ~cnhill1/bin/transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/U/U.0000000080.data cnh-bucket-1/DYAMOND
+#      ~cnhill1/bin/transfer_to_osn.sh  /home4/cnhill1/DYAMOND-1-YEAR/mit_output/U/U.0000000160.data cnh-bucket-1/DYAMOND
+#
+dd=/home4/cnhill1/DYAMOND-1-YEAR/mit_output/V; 
+/bin/ls -1 ${dd} | head -4 | awk '{print "./transfer_to_osn.sh  "'\"${dd}\"'"/"$1" cnh-bucket-1/rpa-transfer-test"}' > transfer_commands
+
+#
+# Use GNU Parallel to launch one or more transfer jobs at once. 
+# It does not make sense to do 100s at once it will overload the networks involved, but groups of 10 or so make sense.
+#
+parallel --env AKEY --env SKEY --jobs 2 --sshloginfile $PBS_NODEFILE --workdir $PWD < transfer_commands
